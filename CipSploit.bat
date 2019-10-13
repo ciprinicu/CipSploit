@@ -1,11 +1,11 @@
 set VipVersion=1.0
-@echo off
+::@echo off
 cls
 cd Downloads/XDevFolder
 IF EXIST "version.txt" del "version.txt"
-download https://raw.githubusercontent.com/CipRos/CipSploit/master/Downloads/XDevFolder/version.txt "version.txt"
-for /f "delims=" %%x in (version.txt) do set version=%%x
-if %version% == HereIsUrFuckingVersion (
+download "https://pastebin.com/raw/f0rFGadA" "version.txt"
+for /f "delims=" %%x in (version.txt) do set DownloadedVersion=%%x
+if %DownloadedVersion%==4.0 (
 echo Verion up to Date!
 pause >nul
 cd ..

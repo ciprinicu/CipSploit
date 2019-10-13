@@ -1,16 +1,46 @@
 @echo off
+
+:UpdateChecker
 cls
-cd ..
-cd ..
-IF EXIST "CipSploit.bat" del "CipSploit.bat" 
-download https://pastebin.com/raw/f0rFGadA "CipSploit.bat"
+echo Checking for updates...
 ping localhost -n 5 >nul
+
+cd ..
+cd ..
+download https://raw.githubusercontent.com/CipRos/CipSploit/master/CipSploit.bat "NewCipsploit.bat"
+cd Downloads/XDevFolder
+
+
+
+IF EXIST "version.txt" (
+
+del version.txt
+download https://pastebin.com/raw/f0rFGadA "version.txt"
+set /p version=<version.txt
+
+) else (
+
+download https://pastebin.com/raw/f0rFGadA "version.txt"
+set /p version=<version.txt
+cd ..
+cd ..
+)
+
+
+
+IF EXIST "CipSploit.bat" (
+
+del "CipSploit.bat"
+rename "NewCipsploit.bat" "CipSploit.bat"
+
+) else (
+
+echo CipSploit.bat Not found! Please reinstall the app!
+pause >nul
+exit
+
+)
+
+ping localhost -n 3 >nul
 cls
 IF EXIST "CipSploit.bat" call "CipSploit.bat"
-
-
-
-
-
-
-
