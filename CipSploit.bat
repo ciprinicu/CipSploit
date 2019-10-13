@@ -1,4 +1,4 @@
-set version=4.0
+set version=DevUpdate v1
 set VipVersion=1.0
 cd Downloads/XDevFolder
 ::call CipUpdater.bat
