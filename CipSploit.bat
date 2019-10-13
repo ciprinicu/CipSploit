@@ -1,7 +1,20 @@
-set version=DevUpdate v2
 set VipVersion=1.0
+@echo off
+cls
 cd Downloads/XDevFolder
-call CipUpdater.bat
+IF EXIST "version.txt" del "version.txt"
+download https://raw.githubusercontent.com/CipRos/CipSploit/master/Downloads/XDevFolder/version.txt "version.txt"
+for /f "delims=" %%x in (version.txt) do set version=%%x
+if %version% == HereIsUrFuckingVersion (
+echo Verion up to Date!
+pause >nul
+cd ..
+cd ..
+) else (
+::call CipUpdater.bat
+echo here you call CipUpdater.bat
+pause >nul
+)
 set RedAndGreen=00
 set Blue=10
 set DarkGreen=20
@@ -15,7 +28,6 @@ set SolidBlue=90
 set BlackAndBlue=01
 set BlackAndGreen=02
 
-@echo off
 cls
 cd Downloads/XDevFolder
 if exist data.dll (
