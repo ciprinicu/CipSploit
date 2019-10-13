@@ -6,7 +6,7 @@ IF EXIST "version.txt" del "version.txt"
 download "https://pastebin.com/raw/f0rFGadA" "version.txt"
 for /f "delims=" %%x in (version.txt) do set DownloadedVersion=%%x
 if %DownloadedVersion%==4.0 (
-echo Verion up to Date!
+echo Version up to Date!
 pause >nul
 cd ..
 cd ..
