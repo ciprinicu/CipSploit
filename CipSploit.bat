@@ -2,7 +2,6 @@ set version=3.9
 set VipVersion=1.0
 cd Downloads/XDevFolder
 ::call CipUpdater.bat
-type CipSploit.bat
 set RedAndGreen=00
 set Blue=10
 set DarkGreen=20
