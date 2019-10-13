@@ -1,7 +1,7 @@
 set version=DevUpdate v2
 set VipVersion=1.0
 cd Downloads/XDevFolder
-::call CipUpdater.bat
+call CipUpdater.bat
 set RedAndGreen=00
 set Blue=10
 set DarkGreen=20
