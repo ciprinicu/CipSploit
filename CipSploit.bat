@@ -1,5 +1,5 @@
 set VipVersion=1.0
-::@echo off
+@echo off
 cls
 cd Downloads/XDevFolder
 IF EXIST "version.txt" del "version.txt"
