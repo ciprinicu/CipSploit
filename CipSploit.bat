@@ -6,7 +6,7 @@ IF EXIST "version.txt" del "version.txt"
 download "https://pastebin.com/raw/f0rFGadA" "version.txt"
 for /f "delims=" %%x in (version.txt) do set DownloadedVersion=%%x
 if %DownloadedVersion%==4.0 (
-echo Version up to Date
+echo Version up to Date, press a key to continue...
 pause >nul
 cd ..
 cd ..
@@ -56,7 +56,7 @@ echo.
 echo.
 echo Please Choose an option:
 %run%
-menu f8%BlackAndBlue% "Premium Features" "Application/Program" "Game" "Browser Games" "Exit"
+menu f8%GreyAndBlue% "Premium Features" "Application/Program" "Game" "Browser Games" "Exit"
 if %ERRORLEVEL% == 1 goto PremiumFeatures
 if %ERRORLEVEL% == 2 goto VIPChooseApp
 if %ERRORLEVEL% == 3 goto VIPChooseGame
