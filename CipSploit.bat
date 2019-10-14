@@ -45,6 +45,12 @@ goto main
 
 :VipMenu
 cls
+cd Downloads/XDevFolder
+type logo.txt
+cd..
+cd..
+echo.
+echo.
 echo Hello %USERNAME%, welcome back to Premium CipSploit V%VipVersion%!
 echo.
 echo.
