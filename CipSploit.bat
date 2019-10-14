@@ -1,7 +1,20 @@
 set VipVersion=1.0
 @echo off
 cls
-
+cd Downloads/XDevFolder
+IF EXIST "version.txt" del "version.txt"
+download "https://pastebin.com/raw/f0rFGadA" "version.txt"
+for /f "delims=" %%x in (version.txt) do set DownloadedVersion=%%x
+if %DownloadedVersion%==4.0 (
+echo Version up to Date, press a key to continue...
+pause >nul
+cd ..
+cd ..
+) else (
+::call CipUpdater.bat
+echo here you call CipUpdater.bat
+pause >nul
+)
 set RedAndGreen=00
 set Blue=10
 set DarkGreen=20
