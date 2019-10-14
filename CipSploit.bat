@@ -12,7 +12,7 @@ pause >nul
 cd ..
 cd ..
 ) else (
-::call CipUpdater.bat
+call CipUpdater.bat
 echo here you call CipUpdater.bat
 pause >nul
 )
