@@ -1,20 +1,7 @@
 set VipVersion=1.0
 @echo off
 cls
-cd Downloads/XDevFolder
-IF EXIST "version.txt" del "version.txt"
-download "https://pastebin.com/raw/f0rFGadA" "version.txt"
-for /f "delims=" %%x in (version.txt) do set DownloadedVersion=%%x
-if %DownloadedVersion%==4.0 (
-echo Version up to Date, press a key to continue...
-pause >nul
-cd ..
-cd ..
-) else (
-::call CipUpdater.bat
-echo here you call CipUpdater.bat
-pause >nul
-)
+
 set RedAndGreen=00
 set Blue=10
 set DarkGreen=20
@@ -56,7 +43,7 @@ echo.
 echo.
 echo Please Choose an option:
 %run%
-menu f8%GreyAndBlue% "Premium Features" "Application/Program" "Game" "Browser Games" "Exit"
+menu f40 "Premium Features" "Application/Program" "Game" "Browser Games" "Exit"
 if %ERRORLEVEL% == 1 goto PremiumFeatures
 if %ERRORLEVEL% == 2 goto VIPChooseApp
 if %ERRORLEVEL% == 3 goto VIPChooseGame
@@ -83,7 +70,7 @@ echo.
 echo.
 echo.
 echo Please Choose an option:
-menu f8%BlackAndBlue% "Activate CipSploit Premium" "Application/Program" "Game" "Browser Games" "Exit"
+menu f40 "Activate CipSploit Premium" "Application/Program" "Game" "Browser Games" "Exit"
 if %ERRORLEVEL% == 1 goto ActivateCS
 if %ERRORLEVEL% == 2 goto ChooseApp
 if %ERRORLEVEL% == 3 goto ChooseGame
@@ -96,17 +83,17 @@ echo.
 echo.
 echo Please enter the activation code:
 set /p "actvcode=> "
-if NOT %actvcode%==H9UBUN73MCL (
+if NOT %actvcode%==%USERNAME% (
 echo Invalid Code!
 ping localhost -n 3 >nul
 goto main
 ) else (
 echo Code Valid!
 cd Downloads/XDevfolder/
-echo "H9UBUN73MCL" >> data.dll
+echo "H9UBUN73MCL" ; %USERNAME% ; %TIME% ; %DATE%>> data.dll
 echo Activated Premium!
 ping localhost -n 5 >nul
-goto main
+goto VIPmenu
 )
 
 
