@@ -1,0 +1,63 @@
+:home 
+cls
+
+cd Downloads\XDevFolder
+type logo.txt
+cd..
+cd..
+echo ================================================ CipSploit© - exploit hub ===============================================
+echo.
+
+echo.
+echo [1] Log In
+echo [2] Exit
+echo.
+set /p op=
+if %op%==1 goto 1
+if %op%==2 goto 2
+goto home
+
+:1
+color 07
+cls
+echo
+echo ================================================ CipSploit© - exploit hub ===============================================
+echo.
+Set /p logname=Username:
+if "%logname%"=="%logname%" goto 2.1
+
+
+:2.1
+echo.
+set /p logpass="Password:"
+if "%logpass%"=="%logpass%" goto login
+
+
+:login
+cd "%userprofile%\documents\logdet"
+if exist "%logname%.bat" goto call
+if not exist "%logname%.bat" goto errorlog
+
+
+:call
+call "%logname%.bat"
+if "%password%"=="%logpass%" goto logdone
+goto errorlog
+
+
+:errorlog
+color 0c
+echo.
+echo Username or Password incorrect.
+echo Access denied.
+pause >nul
+goto home
+
+
+:logdone
+cls
+echo ================================================ CipSploit© - exploit hub ===============================================
+echo.
+echo Successfully logged in!
+echo.
+goto verify

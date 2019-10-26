@@ -17,7 +17,8 @@ IF EXIST "version.txt" (
 del version.txt
 download https://pastebin.com/raw/f0rFGadA "version.txt"
 set /p version=<version.txt
-
+cd ..
+cd ..
 ) else (
 
 download https://pastebin.com/raw/f0rFGadA "version.txt"
@@ -32,7 +33,7 @@ IF EXIST "CipSploit.bat" (
 
 del "CipSploit.bat"
 rename "NewCipsploit.bat" "CipSploit.bat"
-
+goto StartCS
 ) else (
 
 echo CipSploit.bat Not found! Please reinstall the app!
@@ -41,6 +42,7 @@ exit
 
 )
 
+:StartCS
 ping localhost -n 3 >nul
 cls
 IF EXIST "CipSploit.bat" call "CipSploit.bat"
