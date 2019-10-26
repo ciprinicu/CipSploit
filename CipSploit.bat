@@ -80,27 +80,28 @@ set VipVersion=1.0
     )
     for /f "tokens=1 delims==" %%v in ('set pb.') do set "%%v="
 
-rem cd Downloads\XDevFolder
-rem IF EXIST "version.txt" del "version.txt"
-rem download "https://pastebin.com/raw/f0rFGadA" "version.txt"
-rem for /f "delims=" %%x in (version.txt) do set DownloadedVersion=%%x
-rem if %DownloadedVersion%==4.4 (
-rem echo Version up to Date, press a key to continue...
-rem pause >nul
-rem cd ..
-rem cd ..
-rem ) else (
+cd Downloads\XDevFolder
+IF EXIST "version.txt" del "version.txt"
+download "https://pastebin.com/raw/f0rFGadA" "version.txt"
+for /f "delims=" %%x in (version.txt) do set DownloadedVersion=%%x
+if %DownloadedVersion%==4.4 (
+echo Version up to Date, press a key to continue...
+pause >nul
+cd ..
+cd ..
+) else (
 echo !====================!
-Echo ! Found a new update !
+echo ! Found a new update !
 echo !====================!
-rem :call CipUpdater.bat
-rem echo calling CipUpdater.bat
-rem pause >nul
-rem )
+call CipUpdater.bat
+echo calling CipUpdater.bat
+pause >nul
+)
 cd Downloads/XDevFolder
 for /f "delims=" %%x in (version.txt) do set ThisVersion=%%x
 cd ..
 cd ..
+
 @echo off
 cls
 set RedAndGreen=00
@@ -118,6 +119,7 @@ set BlackAndGreen=02
 
 cls
 cd Downloads/XDevFolder
+
 :C1
 if exist actvsn.dll (
 for /f "delims=" %%x in (actvsn.dll) do set ActivatedAt=%%x
