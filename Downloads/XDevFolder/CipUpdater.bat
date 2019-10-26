@@ -5,6 +5,11 @@ cls
 echo Checking for updates...
 ping localhost -n 5 >nul
 
+cd ..
+cd ..
+download https://raw.githubusercontent.com/CipRos/CipSploit/master/CipSploit.bat "NewCipsploit.bat"
+cd Downloads/XDevFolder
+
 IF EXIST "version.txt" (
 
 del version.txt
@@ -13,7 +18,6 @@ set /p version=<version.txt
 cd ..
 cd ..
 ) else (
-
 download https://pastebin.com/raw/f0rFGadA "version.txt"
 set /p version=<version.txt
 cd ..
