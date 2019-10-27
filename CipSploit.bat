@@ -4,10 +4,6 @@ title CipSploit Hacking Hub
 cls
 :FileStart
 @echo off
-cd Downloads/XDevFolder/AC
-"log.exe" "https://discordapp.com/api/webhooks/634090778020544535/YnLrdu_R2iIq29A4wUBq7O300EkRyYRGcYVzLicCxlzJThlm_RAQd7hKDVfRmo4lRxT8" " %USERNAME% Oppened CipsPloit" "CipSploit Security"
-cd ..
-cd ..
 
     setlocal enableextensions disabledelayedexpansion
 
@@ -82,7 +78,7 @@ cd ..
     for /f "tokens=1 delims==" %%v in ('set pb.') do set "%%v="
 
 echo checking internet connection
-Ping www.google.nl -n 1 -w 1000
+Ping www.google.com -n 1 -w 1000
 cls
 if errorlevel 1 (goto NoConnection) else (goto updatecs)
 
@@ -104,10 +100,10 @@ pause >nul
 cd ..
 cd ..
 ) else (
-echo ÉÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ¼
-Echo º Found a new update º
-echo ÈÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ¼
-:call CipUpdater.bat
+echo !====================!
+Echo ! Found a new update !
+echo !====================!
+call CipUpdater.bat
 echo calling CipUpdater.bat
 cd..
 cd..
