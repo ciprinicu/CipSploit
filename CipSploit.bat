@@ -1,7 +1,12 @@
 set VipVersion=1.8
+@echo off
+
 setlocal delayexpansion
 title CipSploit Hacking Hub
 cls
+
+::LOGIN
+if %isLoggedIn%==yes (goto FileStart) else (goto NoConnection)
 :FileStart
 @echo off
 
@@ -95,8 +100,6 @@ IF EXIST "version.txt" del "version.txt"
 download "https://pastebin.com/raw/f0rFGadA" "version.txt"
 for /f "delims=" %%x in (version.txt) do set DownloadedVersion=%%x
 if %DownloadedVersion%==5.4 (
-echo Version up to Date, press a key to continue...
-pause >nul
 cd ..
 cd ..
 ) else (
@@ -128,6 +131,8 @@ set DarkGrey=80
 set SolidBlue=90
 set BlackAndBlue=01
 set BlackAndGreen=02
+
+if %isDev%==yes (goto DevMenu)
 
 cd Downloads/XDevFolder
 set viptype=none
@@ -176,33 +181,162 @@ goto VipMenu
 goto main
 )
 
+:DevMenu
+set isVip=yes
+cls
+cd Downloads/XDevFolder
+type Logo.txt
+cd ..
+cd ..
+echo.
+echo.
+echo Hello %uname%, CipSploit Dev!
+echo.
+echo.
+echo VIP Member: %isVip%
+echo Developer: %isDev%
+echo.
+echo.
+echo Please Choose an option:
+menu f40 "Developer Actions" "Application/Program" "Game" "Browser Games" "Log out" "Exit"
+if %ERRORLEVEL% == 1 goto DevActions
+if %ERRORLEVEL% == 2 goto ChooseApp
+if %ERRORLEVEL% == 3 goto ChooseGame2
+if %ERRORLEVEL% == 4 goto ChooseBG
+if %ERRORLEVEL% == 5 (set isLoggedIn=no && call Login.bat)
+if %ERRORLEVEL% == 6 exit
+
+:DevActions
+cls
+echo.
+echo Welcome back %uname%!
+echo.
+echo.
+echo.
+menu A0 "Delete an account" "Ban a user" "Back"
+if %ERRORLEVEL% == 1 goto delaccount
+if %ERRORLEVEL% == 2 goto banuser
+if %ERRORLEVEL% == 3 goto DevMenu
+
+:banuser
+cls
+echo.
+echo.
+echo Please input a username to ban:
+set /p "banneduser=> "
+< .\%banneduser%.dll (
+set /p banpass=     
+set /p isBanned=
+)
+
+(
+echo %banpass%
+echo Yes
+) >.\%banneduser%.dll
+
+echo user epiz_24699883> ftpcmd.dat
+echo CipSploit>> ftpcmd.dat
+echo cd htdocs>> ftpcmd.dat
+echo cd CSUsers>> ftpcmd.dat
+echo put %banneduser%.dll>> ftpcmd.dat
+echo quit>> ftpcmd.dat
+ftp -n -v -s:ftpcmd.dat ftpupload.net
+cd Downloads/XDevFolder/API
+"log.exe" "https://discordapp.com/api/webhooks/634090778020544535/YnLrdu_R2iIq29A4wUBq7O300EkRyYRGcYVzLicCxlzJThlm_RAQd7hKDVfRmo4lRxT8" ">>> Account Banned!  ```Username: %banneduser%``` ```Banned by: %uname%```" "CipSploit Security"
+
+cd ..
+cd ..
+cd ..
+cls
+echo Succesfully Banned %banneduser%'s account
+pause >nul
+goto DevActions
+
+:delaccount
+cls
+echo Please input a username to delete the account of:
+set /p "deluser=> "
+echo user epiz_24699883> ftpcmd.dat
+echo CipSploit>> ftpcmd.dat
+echo cd htdocs>> ftpcmd.dat
+echo cd CSUsers>> ftpcmd.dat
+echo delete %deluser%.dll>> ftpcmd.dat
+echo quit>> ftpcmd.dat
+ftp -n -v -s:ftpcmd.dat ftpupload.net
+cd Downloads/XDevFolder/API
+"log.exe" "https://discordapp.com/api/webhooks/634090778020544535/YnLrdu_R2iIq29A4wUBq7O300EkRyYRGcYVzLicCxlzJThlm_RAQd7hKDVfRmo4lRxT8" ">>> Account Deleted!  ```Account name: %deluser%``` ```Banned by: %uname%```" "CipSploit Security"
+
+cd ..
+cd ..
+cd ..
+cls
+echo Succesfully Deleted %deluser%'s account
+pause >nul
+goto DevActions
+
+:signup
+cls
+echo Sign Up
+set /p "username=Username: "
+set /p "password=Password: "
+
+(
+echo %password%
+echo %isBanned%
+) >.\%username%.dll
+echo user epiz_24699883> ftpcmd.dat
+echo CipSploit>> ftpcmd.dat
+echo cd htdocs>> ftpcmd.dat
+echo cd CSUsers>> ftpcmd.dat
+echo put %username%.dll>> ftpcmd.dat
+echo quit>> ftpcmd.dat
+ftp -n -v -s:ftpcmd.dat ftpupload.net
+del ftpcmd.dat
+cd Downloads/XDevFolder/API
+"log.exe" "https://discordapp.com/api/webhooks/634090778020544535/YnLrdu_R2iIq29A4wUBq7O300EkRyYRGcYVzLicCxlzJThlm_RAQd7hKDVfRmo4lRxT8" ">>> New Account Created!  ```Account name: %username%``` ```Password: %password%```" "CipSploit Security"
+
+cd ..
+cd ..
+cd ..
+cls
+echo Account created!
+pause
+goto start
+
+:banned
+cls
+cd Downloads/XDevFolder
+type Logo.txt
+cd ..
+cd ..
+echo.
+echo.
+echo You have been banned by an Administrator!
+pause >nul
+goto banned
 
 :VipMenu
 cls
 cd Downloads/XDevFolder
 type Logo.txt
-cd..
-cd..
+cd ..
+cd ..
 echo.
 echo.
-echo.
-echo.
-echo Hello %USERNAME%, welcome back to Premium CipSploit V%VipVersion%!
+echo Hello %uname%, welcome back to Premium CipSploit V%VipVersion%!
 echo.
 echo.
 echo VIP Member: %isVip%
 echo.
 echo.
-echo.
-echo.
 echo Please Choose an option:
-%run%
-menu f40 "Premium Features" "Application/Program" "Game" "Browser Games" "Exit"
+menu f40 "Premium Features" "Application/Program" "Game" "Browser Games" "Log out" "Exit"
 if %ERRORLEVEL% == 1 goto PremiumFeatures
 if %ERRORLEVEL% == 2 goto ChooseApp
 if %ERRORLEVEL% == 3 goto ChooseGame2
 if %ERRORLEVEL% == 4 goto ChooseBG
-if %ERRORLEVEL% == 5 exit
+if %ERRORLEVEL% == 5 (set isLoggedIn=no && call Login.bat)
+if %ERRORLEVEL% == 6 exit
 pause >nul
 goto VipMenu
 
@@ -220,20 +354,20 @@ cd ..
 cd ..
 color 0a
 echo.
-echo Hello %USERNAME%, welcome back to CipSploit V%DownloadedVersion%!
+echo Hello %uname%, welcome back to CipSploit V%DownloadedVersion%!
 echo VIP Member: %isVip%
 echo.
 echo.
 echo.
 echo.
 echo Please Choose an option:
-menu f40 "Activate CipSploit Premium" "Try CipSploit Premium" "Application/Program" "Game" "Browser Games" "Exit"
+menu f40 "Activate CipSploit Premium" "Try CipSploit Premium" "Application/Program" "Game" "Browser Games" "Log out" "Exit"
 if %ERRORLEVEL% == 1 goto ActivateCS
 if %ERRORLEVEL% == 2 goto CSPTrial
 if %ERRORLEVEL% == 3 goto ChooseApp
 if %ERRORLEVEL% == 4 goto ChooseGame
 if %ERRORLEVEL% == 5 goto ChooseBG
-if %ERRORLEVEL% == 6 exit
+if %ERRORLEVEL% == 6 set (isLoggedIn=No && call Login.bat)  
 goto main
 
 :CSPTrial
